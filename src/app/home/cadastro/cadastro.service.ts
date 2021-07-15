@@ -13,4 +13,8 @@ export class CadastroService {
   cadastrar(usuario: Usuario): Observable<Object> {
     return this.http.post('http://localhost:3000/user/signup', usuario);
   }
+
+  verificaUsuarioExistente(userName: string): Observable<any> {
+    return this.http.get(`http://localhost:3000/user/exists/${userName}`);
+  }
 }
