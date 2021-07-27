@@ -1,0 +1,28 @@
+<div class="container mt-4" *ngIf="animal$ | async as animal">
+  <div class="row">
+    <div class="col-md-8">
+      <app-animal
+        [url]="animal.url"
+        [descricao]="animal.description"
+      ></app-animal>
+    </div>
+    <div class="col-md-4">
+      <p class="text-left break-word">
+        <small>{{ animal.description }}</small>
+      </p>
+      <p class="d-flex justify-content-around">
+        <span (click)="curtir()">
+          <i aria-hidden="true" class="fa fa-heart-o fa-2x"></i>
+          {{ animal.likes }}
+        </span>
+        <span>
+          <i aria-hidden="true" class="fa fa-comment-o fa-2x"></i>
+          {{ animal.comments }}
+        </span>
+        <span (click)="excluir()">
+          <i aria-hidden="true" class="fa fa-trash-o fa-2x"></i>
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
