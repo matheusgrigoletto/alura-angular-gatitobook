@@ -3,7 +3,10 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+import { environment } from 'src/environments/environment';
 import { UsuarioService } from './usuario/usuario.service';
+
+const API = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +20,7 @@ export class AuthService {
   login(usuario: string, senha: string): Observable<HttpResponse<any>> {
     return this.http
       .post(
-        'http://localhost:3000/user/login',
+        `${API}/user/login`,
         {
           userName: usuario,
           password: senha,
