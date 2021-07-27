@@ -23,6 +23,15 @@
           <i aria-hidden="true" class="fa fa-trash-o fa-2x"></i>
         </span>
       </p>
+
+      <app-comentarios
+        *ngIf="animal.allowComments; else warning"
+        [id]="animal.id"
+      ></app-comentarios>
+
+      <ng-template #warning>
+        <p>Comentários desativados.</p>
+      </ng-template>
     </div>
   </div>
 </div>

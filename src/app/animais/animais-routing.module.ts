@@ -3,11 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ListaComponent } from './lista/lista.component';
 import { DetalheAnimalComponent } from './detalhe-animal/detalhe-animal.component';
+import { ListaAnimaisResolver } from './lista/lista-animais.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: ListaComponent,
+    resolve: {
+      animais: ListaAnimaisResolver,
+    },
   },
   {
     path: ':id',

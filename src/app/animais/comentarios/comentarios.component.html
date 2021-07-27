@@ -1,0 +1,39 @@
+<div *ngIf="comentarios$ | async as comentarios">
+  <ul class="list-unstyled comentario-list">
+    <li *ngFor="let comentario of comentarios">
+      <p class="text-dark font-weight-bold mr-1">
+        {{ comentario.userName }}
+      </p>
+      <em>{{ comentario.date | date: "dd/MM/yyyy, HH:mm" }}</em>
+      <p class="break-word mb-2">
+        {{ comentario.text }}
+      </p>
+    </li>
+  </ul>
+
+  <div class="mt-4">
+    <form [formGroup]="form" (submit)="salvar()">
+      <div class="input-group">
+        <textarea
+          formControlName="comentario"
+          class="form-control"
+          placeholder="Comentário"
+          maxlength="300"
+        ></textarea>
+        <div class="input-group-append">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="form.invalid"
+          >
+            Publicar
+          </button>
+        </div>
+      </div>
+      <app-mensagem
+        mensagem="Tamanho máximo de 300 caracteres"
+        *ngIf="!!form.get('comentario')?.errors?.maxlength"
+      ></app-mensagem>
+    </form>
+  </div>
+</div>
